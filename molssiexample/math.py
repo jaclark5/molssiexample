@@ -4,9 +4,10 @@ A file for executing math functions.
 
 import random
 import numpy as np
+from typing import Union  # gives ability to define types in python
 
-def euler(n=10,maxitr=1000):
 
+def euler(n=10, maxitr=1000):
 
     if n < 0:
         raise ValueError("Only positive integers are allowed")
@@ -15,23 +16,24 @@ def euler(n=10,maxitr=1000):
     euler = 0
     for i in range(maxitr):
         denominator = 1
-        for j in range(1,i+1):
-            denominator = denominator*j
-        euler_tmp += 1/denominator
+        for j in range(1, i + 1):
+            denominator = denominator * j
+        euler_tmp += 1 / denominator
 
         if i == 0:
-            euler = round(euler_tmp,n)
+            euler = round(euler_tmp, n)
         else:
-            if euler == round(euler_tmp,n):
+            if euler == round(euler_tmp, n):
                 break
             else:
-                euler = round(euler_tmp,n)
-    print("Euler's number up to %g digits is: %f" % (n,euler))
+                euler = round(euler_tmp, n)
+    print("Euler's number up to %g digits is: %f" % (n, euler))
     return euler
+
 
 def find_pi(maxitr=1e+20):
 
-    ncircle, ntotal = [0,0]
+    ncircle, ntotal = [0, 0]
     for i in range(int(maxitr)):
 
         # Generate coordinates
@@ -41,8 +43,7 @@ def find_pi(maxitr=1e+20):
         if np.sqrt(np.sum(coord**2)) < 1:
             ncircle += 1
         # Calculate pi
-        pi_tmp = ncircle/ntotal*4
-
+        pi_tmp = ncircle / ntotal * 4
 
     print("Pi is: %f" % (pi_tmp))
     return pi_tmp

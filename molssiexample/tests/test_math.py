@@ -1,5 +1,7 @@
 import molssiexample as me
 import pytest
+import numpy as np
+
 
 def test_euler_1():
 
@@ -33,4 +35,5 @@ def test_euler_failures():
     assert "positive int" in str(exc.value)
 
 def test_find_pi():
+    np.random.seed(0)
     assert me.math.find_pi(maxitr=1e+4) == pytest.approx(3.14,abs=1e-1)
