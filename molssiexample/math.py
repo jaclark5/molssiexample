@@ -6,8 +6,25 @@ import random
 import numpy as np
 from typing import Union  # gives ability to define types in python
 
-
 def euler(n=10, maxitr=1000):
+
+    """
+    This function computes :math:`e` via a Taylor series.
+
+    .. math::
+
+        e = 1 + \\sum_n^\\infty \\frac{1}{n!}
+
+    Parameters
+    ----------
+    n : int
+        Level of precision.
+
+    Returns
+    -------
+    e_value : float
+        The computed value of Euler's number.
+    """
 
     if n < 0:
         raise ValueError("Only positive integers are allowed")
@@ -33,6 +50,20 @@ def euler(n=10, maxitr=1000):
 
 def find_pi(maxitr=1e+20):
 
+    """
+    This function computes :math:`\\pi` heuristically.
+
+    Parameters
+    ----------
+    maxitr : int
+        Number of random coordinates used in calculation.
+
+    Returns
+    -------
+    pi_value : float
+        The computed value of pi according to the number of points requested.
+    """
+
     ncircle, ntotal = [0, 0]
     for i in range(int(maxitr)):
 
@@ -47,3 +78,4 @@ def find_pi(maxitr=1e+20):
 
     print("Pi is: %f" % (pi_tmp))
     return pi_tmp
+
